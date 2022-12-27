@@ -1,6 +1,9 @@
 import express , {Request ,Response} from 'express';
 import jwt from 'jsonwebtoken';
 import {User,userStore} from '../models/user'
+import verifyToken from "../middlewares/verifyToken"
+
+
 import dotenv from 'dotenv'
 const user_route = express.Router()
 const store = new userStore;
@@ -10,7 +13,7 @@ const secret_token = process.env.TOKEN as string
 
 //----------------- index -----------------------
 
-user_route.get('/users',async (_req: Request , res :Response)  =>  {
+user_route.get('/users',verifyToken,async (_req: Request , res :Response)  =>  {
     try {
         const users = await store.index()
         res.status(200)
@@ -24,7 +27,7 @@ user_route.get('/users',async (_req: Request , res :Response)  =>  {
 })
 
 //----------------- create -----------------------
-user_route.post('/user',async (_req:Request , res: Response)=>{
+user_route.post('/user',verifyToken,async (_req:Request , res: Response)=>{
     try {
         const user:User = {
             firstName: _req.body.firstName,
@@ -45,7 +48,7 @@ user_route.post('/user',async (_req:Request , res: Response)=>{
 
 
 // ----------------- show -------------------------
-user_route.get('/user/:id',async (req:Request , res: Response) => {
+user_route.get('/user/:id',verifyToken,async (req:Request , res: Response) => {
     try {
         const user = await store.show(req.params.id)
             res.json(user)

@@ -1,6 +1,7 @@
 import express,{Request ,Response} from "express";
 import jwt from 'jsonwebtoken';
 import { product,productStore } from "../../src/models/product";
+import verifyToken from "../middlewares/verifyToken"
 import dotenv from 'dotenv'
 
 
@@ -38,7 +39,7 @@ product_route.get('/product/:id',async (req:Request , res: Response) => {
 
 // ----------------- create -------------------------
 
-product_route.post('/product', async (req: Request , res : Response) => {
+product_route.post('/product',verifyToken, async (req: Request , res : Response) => {
     const product = {
         name:req.body.name,
         price:req.body.price,
@@ -46,12 +47,12 @@ product_route.post('/product', async (req: Request , res : Response) => {
     }
         
     try {
-       jwt.verify(req.body.token,secret_token)
        const newProduct = await store.create(product)
        res.json(newProduct)
     } catch (error) {
         res.status(401)
         res.json(error)
+        console.log(error)
     }
 })
 
