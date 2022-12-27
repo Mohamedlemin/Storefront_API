@@ -8,10 +8,9 @@
     "jasmine": "jasmine",
     "migrate": "node src/database/client.ts",
     "lint": "eslint 'src/server.ts'",
-    "prettier": "prettier --write src/**/*.ts",
+    "prettier": "prettier --write src/**/**/*.ts",
     "start": "nodemon src/server.ts",
-    "test": "npm run build && npm run jasmine",
-    "test_db": "ENV=test && npx tsc && db-migrate --env test up && jasmine && db-migrate db:drop test"
+    "test": "npm run build && ENV=test && npx tsc && db-migrate --env test up && jasmine && db-migrate db:drop test"
   },
   "repository": {
     "type": "git",
