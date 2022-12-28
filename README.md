@@ -34,11 +34,11 @@ TOKEN = my_scret_token
 
 ## scripts 
 
-npm run
-        - build  // to build the project
-        - test   // buid and run all test include database tests
-        - prettier  or lint  // code format
-        - start // run the server
+### npm run :
+- build  // to build the project
+- test   // buid and run all test include database tests
+- prettier  or lint  // code format
+- start // run the server
    
 ## API Endpoints
 
@@ -47,20 +47,24 @@ storefronAPI.postman_collection.json
 
 ## OR use this :
 #### Products
-- Index  GET/    http://localhost:3000/dev/products
-- Show   GET/    http://localhost:3000/dev/product/:id
-- Create POST/   [token required] http://localhost:3000/dev/product
+- Index  
+> GET/    http://localhost:3000/dev/products
+- Show   
+> GET/    http://localhost:3000/dev/product/:id
+- Create 
+> POST/   [token required] http://localhost:3000/dev/product
  body  ex {
   "name": "Macbook",
   "price": 530,
   "category": "Tech"
 }
-- delete DELETE/ [token required] http://localhost:3000/dev/product/:id
+- delete 
+> DELETE/ [token required] http://localhost:3000/dev/product/:id
 
 #### Users
 - Index [token required]   GET/  http://localhost:3000/dev/users
 - Show [token required]    GET/  http://localhost:3000/dev/user/:id
-- Create N POST/ http://localhost:3000/dev/user
+- Create N  POST/ http://localhost:3000/dev/user
 body ex {
    "firstName":"ahmed",
    "lastName":"babe",
@@ -68,26 +72,31 @@ body ex {
 }
 
 #### Note : user FirstName shoud be unique
-- Auth  POST/ http://localhost:3000/dev/user/auth
+- Auth  
+> POST/ http://localhost:3000/dev/user/auth
 {
    "firstName":"ahmed",
    "password":"passwordA"
 }
 
 #### Orders
-- Index  GET/    http://localhost:3000/dev/orders
-- Show   GET/    http://localhost:3000/dev/order/:id
-- Create POST/   [token required] http://localhost:3000/dev/order
+- Index 
+> GET/    http://localhost:3000/dev/orders
+- Show  
+> GET/    http://localhost:3000/dev/order/:id
+- Create
+> POST/   [token required] http://localhost:3000/dev/order
  body  ex {
 
      "fk_user_id": "9",
      "status": "complete"
 }
 - delete DELETE/ [token required] http://localhost:3000/dev/order/:id
-- add product to cart POST /[token required] 
-http://localhost:3000/dev/orders/:orderID/products
+
+- add product to cart [token required] 
+ > POST / http://localhost:3000/dev/orders/:orderID/products
 
 - Current Order by user (args: user id)[token required]
-  GET/  http://localhost:3000/dev/orders/user/:id/active
+ > GET/  http://localhost:3000/dev/orders/user/:id/active
 - Completed Orders by user (args: user id)[token required]
- GET/  http://localhost:3000/dev/orders/user/:id/complete
+>  GET/  http://localhost:3000/dev/orders/user/:id/complete
