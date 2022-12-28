@@ -8,9 +8,7 @@ describe("Order Model + Extra queries", () => {
   it("should have an current order method", () => {
     expect(extra.current_order).toBeDefined();
   });
-  it("should have an complete order method", () => {
-    expect(extra.complete_order).toBeDefined();
-  });
+  
   it("should have an index method", () => {
     expect(store.index).toBeDefined();
   });
@@ -20,7 +18,7 @@ describe("Order Model + Extra queries", () => {
   });
 
   it("should have a create method", () => {
-    expect(store.create).toBeDefined();
+    expect(store.addProduct).toBeDefined();
   });
 
   it("should have a delete method", () => {
@@ -30,8 +28,6 @@ describe("Order Model + Extra queries", () => {
   it("create should add a order", async () => {
     const result = await store.create({
       fk_user_id: 1,
-      fk_product_id: 1,
-      quantity: 10,
       status: "active",
     });
     expect(result.status).toEqual("active");

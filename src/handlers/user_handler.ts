@@ -25,7 +25,7 @@ user_route.get("/users",verifyToken, async (_req: Request, res: Response) => {
 });
 
 //----------------- create -----------------------
-user_route.post("/user",verifyToken, async (_req: Request, res: Response) => {
+user_route.post("/user", async (_req: Request, res: Response) => {
   try {
     const user: User = {
       firstName: _req.body.firstName,

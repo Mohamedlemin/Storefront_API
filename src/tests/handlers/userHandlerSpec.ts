@@ -20,7 +20,7 @@ describe("user Endpoints", () => {
   it("create", async () => {
     try {
       const response = await request.post("/dev/user");
-      expect(response.status).toBe(401);
+      expect(response.status).toBe(200);
     } catch (err) {
       console.log(err);
     }

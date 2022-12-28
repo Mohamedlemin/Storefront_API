@@ -32,7 +32,7 @@ describe("order Endpoints", () => {
 
   it("create", async () => {
     try {
-      const response = await request.post("/dev/order");
+      const response = await request.post("/dev/orders/:id/products");
       expect(response.status).toBe(401);
     } catch (err) {
       console.log(err);

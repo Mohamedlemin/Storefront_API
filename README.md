@@ -19,12 +19,12 @@
  - create .env file like this 
  ```
 POSTGRES_HOST=127.0.0.1
-POSTGRES_DB=full_stack_dev
+POSTGRES_DB=storefront
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=password123
 
 ENV=dev
-POSTGRES_TEST_DB=full_stack_test
+POSTGRES_TEST_DB=storefront_test
 
 BCRYPT_PASSWORD = my_scret_pass
 SALT_ROUND = 10
@@ -41,6 +41,11 @@ npm run
         - start // run the server
    
 ## API Endpoints
+
+## You can import the postman collection in from 
+storefronAPI.postman_collection.json
+
+## OR use this :
 #### Products
 - Index  GET/    http://localhost:3000/dev/products
 - Show   GET/    http://localhost:3000/dev/product/:id
@@ -55,7 +60,7 @@ npm run
 #### Users
 - Index [token required]   GET/  http://localhost:3000/dev/users
 - Show [token required]    GET/  http://localhost:3000/dev/user/:id
-- Create N[token required] POST/ http://localhost:3000/dev/user
+- Create N POST/ http://localhost:3000/dev/user
 body ex {
    "firstName":"ahmed",
    "lastName":"babe",
@@ -74,14 +79,15 @@ body ex {
 - Show   GET/    http://localhost:3000/dev/order/:id
 - Create POST/   [token required] http://localhost:3000/dev/order
  body  ex {
-    "fk_user_id":3,
-    "fk_product_id":12,
-    "quantity":10,
-    "status":"active"
+
+     "fk_user_id": "9",
+     "status": "complete"
 }
 - delete DELETE/ [token required] http://localhost:3000/dev/order/:id
+- add product to cart POST /[token required] 
+http://localhost:3000/dev/orders/:orderID/products
 
 - Current Order by user (args: user id)[token required]
-  GET/  http://localhost:3000/dev/orders/active/user/:id
+  GET/  http://localhost:3000/dev/orders/user/:id/active
 - Completed Orders by user (args: user id)[token required]
- GET/  http://localhost:3000/dev/orders/complete/user/:id
+ GET/  http://localhost:3000/dev/orders/user/:id/complete

@@ -13,11 +13,15 @@ const order_route = express.Router();
 //----------------- current_order -----------------------
 
 order_route.get(
-  "/orders/active/user/:id",
+  "/orders/user/:id/:status",
   verifyToken,
   async (_req: Request, res: Response) => {
+
+    const userId: number = parseInt(_req.params.id)
+    const status: string = _req.params.status
+
     try {
-      const orders = await extra.current_order(_req.params.id);
+      const orders = await extra.current_order(userId,status);
       res.status(200);
       res.json(orders);
     } catch (error) {
@@ -28,23 +32,7 @@ order_route.get(
   }
 );
 
-//----------------- complete_order -----------------------
 
-order_route.get(
-  "/orders/complete/user/:id",
-  verifyToken,
-  async (_req: Request, res: Response) => {
-    try {
-      const orders = await extra.complete_order(_req.params.id);
-      res.status(200);
-      res.json(orders);
-    } catch (error) {
-      res.status(404);
-      res.json(error);
-      console.log(error);
-    }
-  }
-);
 
 //----------------- index -----------------------
 
@@ -80,8 +68,6 @@ order_route.get(
 order_route.post("/order", verifyToken, async (req: Request, res: Response) => {
   const order = {
     fk_user_id: req.body.fk_user_id,
-    fk_product_id: req.body.fk_product_id,
-    quantity: req.body.quantity,
     status: req.body.status,
   };
 
@@ -107,4 +93,20 @@ order_route.delete("/order/:id", async (req: Request, res: Response) => {
   }
 });
 
+
+
+order_route.post("/orders/:id/products", verifyToken, async (_req: Request, res: Response) => {
+  const orderId: string = _req.params.id
+  const productId: string = _req.body.productId
+  const quantity: number = parseInt(_req.body.quantity)
+
+  try {
+    const addedProduct = await store.addProduct(quantity, orderId, productId)
+    res.json(addedProduct)
+    console.log(addedProduct)
+  } catch(err) {
+    res.status(400)
+    res.json(err)
+  }
+})
 export default order_route;
