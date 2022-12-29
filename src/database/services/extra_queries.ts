@@ -4,13 +4,13 @@ import client from "../../database/client";
 
 export class extra_queries {
   // Current Order by user
-  async current_order(id: Number,status:string): Promise<orders[]> {
+  async current_order(id: Number, status: string): Promise<orders[]> {
     try {
       //@ts-ignore
       const conn = await client.connect();
       const sql =
         "SELECT * FROM orders WHERE fk_user_id = ($1) AND status = ($2);";
-      const result = await conn.query(sql, [id,status]);
+      const result = await conn.query(sql, [id, status]);
       conn.release();
 
       return result.rows;

@@ -36,7 +36,7 @@ order_route.get(
 
 //----------------- index -----------------------
 
-order_route.get("/orders", async (_req: Request, res: Response) => {
+order_route.get("/orders",verifyToken, async (_req: Request, res: Response) => {
   try {
     const orders = await store.index();
     res.status(200);
@@ -83,7 +83,7 @@ order_route.post("/order", verifyToken, async (req: Request, res: Response) => {
 
 // ----------------- delete -------------------------
 
-order_route.delete("/order/:id", async (req: Request, res: Response) => {
+order_route.delete("/order/:id",verifyToken, async (req: Request, res: Response) => {
   try {
     const delete_order = await store.delete(req.params.id);
     res.json(delete_order);
@@ -94,6 +94,7 @@ order_route.delete("/order/:id", async (req: Request, res: Response) => {
 });
 
 
+// add to cart
 
 order_route.post("/orders/:id/products", verifyToken, async (_req: Request, res: Response) => {
   const orderId: string = _req.params.id

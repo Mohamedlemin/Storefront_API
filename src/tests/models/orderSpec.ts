@@ -8,7 +8,7 @@ describe("Order Model + Extra queries", () => {
   it("should have an current order method", () => {
     expect(extra.current_order).toBeDefined();
   });
-  
+
   it("should have an index method", () => {
     expect(store.index).toBeDefined();
   });

@@ -44,6 +44,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 - order_id      : bigint  FK orders(order_id)
 - fk_product_id : bigint  FK product(id)
 
+
 ## Required Technologies
 Your application must make use of the following libraries:
 - Postgres for the database
