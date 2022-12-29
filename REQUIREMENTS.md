@@ -21,28 +21,28 @@ These are the notes from a meeting with the frontend developer that describe wha
 - [OPTIONAL] Completed Orders by user (args: user id)[token required]
 
 ## Data Shapes
-#### Product
--  id
-- name
-- price
-- [OPTIONAL] category
+#### product
+-  id       : integer
+- name      : character varying(150)
+- price     : double precision
+- category  : character varying(150)
 
-#### User
-- id
-- firstName
-- lastName
-- password
+#### users
+- id            : integer  (PK)
+- firstName     : character varying(150)
+- lastName      : character varying(150) 
+- password      : character varying(150)
 
-#### Orders
-- order_id
-- fk_user_id
-- status of order (active or complete)
+#### orders
+- order_id      : integer  (PK)
+- fk_user_id    : bigint   FK  users(id)
+- status        : character varying(15)
 
 #### order_products
-- id
-- quantity 
-- order_id
-- fk_product_id
+- id            : integer PK
+- quantity      : integer 
+- order_id      : bigint  FK orders(order_id)
+- fk_product_id : bigint  FK product(id)
 
 ## Required Technologies
 Your application must make use of the following libraries:
