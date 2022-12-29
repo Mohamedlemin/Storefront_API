@@ -6,14 +6,14 @@ const request = supertest(app);
 describe("order Endpoints", () => {
   it("Complete orders", async () => {
     try {
-      const response = await request.get("/dev/orders/active/user/:id");
+      const response = await request.get("/dev/orders/user/:id/complete");
       expect(response.status).toBe(401);
     } catch (err) {}
   });
 
   it("currents orders", async () => {
     try {
-      const response = await request.get("/dev/orders/complete/user/:id");
+      const response = await request.get("dev/orders/user/:id/active ");
       expect(response.status).toBe(401);
     } catch (err) {}
   });

@@ -8,6 +8,8 @@
 -   create your database
 -   Create 2 databases in postgres docker container with the same information in found in database.json file
 
+## DB Port : 5432
+         
 - To generate the database schema RUN :
 
  ``` 
@@ -42,7 +44,7 @@ TOKEN = my_scret_token
    
 ## API Endpoints
 
-## You can import the postman collection in from 
+# You can import the postman collection from this file
 storefronAPI.postman_collection.json
 
 ## OR use this :

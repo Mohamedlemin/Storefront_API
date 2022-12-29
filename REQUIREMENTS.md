@@ -34,13 +34,15 @@ These are the notes from a meeting with the frontend developer that describe wha
 - password
 
 #### Orders
-- id
-- id of each product in the order
-- quantity of each product in the order
-- user_id
+- order_id
+- fk_user_id
 - status of order (active or complete)
 
-
+#### order_products
+- id
+- quantity 
+- order_id
+- fk_product_id
 
 ## Required Technologies
 Your application must make use of the following libraries:
